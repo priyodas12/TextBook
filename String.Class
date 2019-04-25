@@ -1,1 +1,39 @@
 
+Differeence Between Immutable and Final
+---------------------------------------
+final is a modifier means that you can't change the object's reference to point to another reference or another object,
+but you can still mutate its state (using setter methods e.g). Whereas immutable means that the object's 
+actual value can't be changed, but you can change its reference to another one.
+
+final StringBuffer sb = new StringBuffer("Hello"); 
+sb.append("GFG");
+sb = new StringBuffer("Hello World");//will get error as the reference  cannot be re-assign with new value.
+
+
+String i_p="somevalue"; or String i_p=new String("somevalue");
+i_p="priyo";
+i_p.concat("acbe");
+System.out.println(i_p);//output:somevalue only.
+
+
+Differeence Between String,StringBuffer and StringBuilder
+---------------------------------------------------------
+
+String is immutable, if you try to alter their values, another object gets created, 
+whereas StringBuffer and StringBuilder are mutable so they can change their values.
+
+Thread-Safety Difference
+========================
+
+The difference between StringBuffer and StringBuilder is that StringBuffer is thread-safe. 
+So when the application needs to be run only in a single thread then it is better to use StringBuilder.
+StringBuilder is more efficient than StringBuffer.
+
+Situations:
+==========
+If your string is not going to change use a String class because a String object is immutable.
+If your string can change (example: lots of logic and operations in the construction of the string)
+and will only be accessed from a single thread, using a StringBuilder is good enough.
+If your string can change, and will be accessed from multiple threads, use a StringBuffer because
+StringBuffer is synchronous so you have thread-safety.
+
